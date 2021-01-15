@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
+import Munge from "components/Munge";
 
 export default function Home() {
   return (
@@ -40,6 +41,7 @@ export default function Home() {
             <a>Aaron ⇒ Shrek</a>
           </Link>
         </div>
+        <Munge />
       </main>
     </div>
   );
