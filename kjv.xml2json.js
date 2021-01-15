@@ -1,5 +1,7 @@
 var fs = require("fs");
 var convert = require("xml-js");
+var sqlite3 = require("sqlite3");
+
 var kjvxml = fs.readFileSync("kjv.xml");
 
 // Convert to a JSON file
@@ -49,4 +51,49 @@ biblebook.forEach((bookElem) => {
 
 // console.log(JSON.stringify(kjvVerses, undefined, 2));
 
-fs.writeFileSync("kjvVerses.json", JSON.stringify(kjvVerses, undefined, 2));
+// fs.writeFileSync("kjvVerses.json", JSON.stringify(kjvVerses, undefined, 2));
+
+const kjvTableName = "kjv";
+
+const createTableStatement = `
+CREATE TABLE ${kjvTableName} (
+  bookNum INTEGER,
+  chapterNum INTEGER,
+  verseNum INTEGER,
+  bookName TEXT,
+  bookShortName TEXT,
+  verseText TEXT
+);
+`;
+
+const insertStatement = `
+INSERT INTO ${kjvTableName}(
+  bookNum,
+  chapterNum,
+  verseNum,
+  bookName,
+  bookShortName,
+  verseText
+) VALUES (?, ?, ?, ?, ?, ?);
+`;
+
+const kjvVersesArr = kjvVerses.map((v) => [
+  v.bookNum,
+  v.chapterNum,
+  v.verseNum,
+  v.bookName,
+  v.bookShortName,
+  v.verseText,
+]);
+
+var db = new sqlite3.Database("database/kjv.sqlite");
+db.serialize(() => {
+  db.exec(`DROP TABLE IF EXISTS ${kjvTableName}`);
+  db.exec(createTableStatement);
+  const statement = db.prepare(insertStatement);
+  for (var idx = 0; idx < kjvVersesArr.length; idx++) {
+    statement.run(kjvVersesArr[idx]);
+  }
+  statement.finalize();
+});
+db.close();
