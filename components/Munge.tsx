@@ -6,7 +6,8 @@ export default function Munge() {
   const [search, setSearch] = useState<string>("");
   const [replace, setReplace] = useState<string>("");
 
-  const validSearch = search && replace;
+  const validSearch = search !== "" && replace !== "";
+  // console.log(`Munge: s/${search}/${replace}/g is valid: ${validSearch}`);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     console.log("asdf");
