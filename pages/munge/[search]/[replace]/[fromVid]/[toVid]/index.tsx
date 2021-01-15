@@ -11,8 +11,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const fromVidTable = parseVid(fromVid as string);
   const toVidTable = parseVid(toVid as string);
 
-  const sqlQueryLike = `%${search}%`;
-
   const db = await OpenDatabase();
   const fromVerse = await lookupVid(db, fromVidTable);
   const toVerse = await lookupVid(db, toVidTable);
