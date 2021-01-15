@@ -1,6 +1,7 @@
 import React from "react";
 
 import { IVerse, verseKey } from "lib/Verse";
+import { sanitizeHtml } from "lib/Sanitize";
 
 type VerseRowProps = {
   verse: IVerse;
@@ -9,9 +10,10 @@ type VerseRowProps = {
 };
 export function VerseRow({ verse, search, replace }: VerseRowProps) {
   const mungedClasses = "munged text-red-600";
+  const sanitizedReplace = sanitizeHtml(replace);
   const verseTextReplacedHtml = verse.verseText.replace(
     new RegExp(search, "g"),
-    `<span class="${mungedClasses}">${replace}</span>`
+    `<span class="${mungedClasses}">${sanitizedReplace}</span>`
   );
 
   return (

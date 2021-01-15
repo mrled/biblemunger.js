@@ -18,8 +18,10 @@ export default function Munge() {
       );
       return;
     }
+    const encodedSearch = encodeURIComponent(search);
+    const encodedReplace = encodeURIComponent(replace);
     router.push({
-      pathname: `/munge/${search}/${replace}`,
+      pathname: `/munge/${encodedSearch}/${encodedReplace}`,
     });
   };
 
