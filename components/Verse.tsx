@@ -8,9 +8,10 @@ type VerseRowProps = {
   replace: string;
 };
 export function VerseRow({ verse, search, replace }: VerseRowProps) {
-  const verseTextReplaced = verse.verseText.replace(
+  const mungedClasses = "munged text-red-600";
+  const verseTextReplacedHtml = verse.verseText.replace(
     new RegExp(search, "g"),
-    replace
+    `<span class="${mungedClasses}">${replace}</span>`
   );
 
   return (
@@ -18,7 +19,7 @@ export function VerseRow({ verse, search, replace }: VerseRowProps) {
       <div className="">
         {verse.bookName} {verse.chapterNum}:{verse.verseNum}
       </div>
-      <div>{verseTextReplaced}</div>
+      <div dangerouslySetInnerHTML={{ __html: verseTextReplacedHtml }} />
     </>
   );
 }
