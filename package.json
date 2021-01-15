@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "kjv2sqlite": "node kjv.xml2sqlite.js"
   },
   "dependencies": {
     "next": "10.0.5",

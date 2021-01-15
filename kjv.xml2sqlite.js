@@ -57,6 +57,7 @@ const kjvTableName = "kjv";
 
 const createTableStatement = `
 CREATE TABLE ${kjvTableName} (
+  id INTEGER PRIMARY KEY,
   bookNum INTEGER,
   chapterNum INTEGER,
   verseNum INTEGER,
@@ -68,16 +69,18 @@ CREATE TABLE ${kjvTableName} (
 
 const insertStatement = `
 INSERT INTO ${kjvTableName}(
+  id,
   bookNum,
   chapterNum,
   verseNum,
   bookName,
   bookShortName,
   verseText
-) VALUES (?, ?, ?, ?, ?, ?);
+) VALUES (?, ?, ?, ?, ?, ?, ?);
 `;
 
-const kjvVersesArr = kjvVerses.map((v) => [
+const kjvVersesArr = kjvVerses.map((v, idx) => [
+  idx,
   v.bookNum,
   v.chapterNum,
   v.verseNum,

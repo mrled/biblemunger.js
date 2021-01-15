@@ -1,28 +1,33 @@
 /* The 'Verse
+ *
+ * On verse database ID, vid/Verse ID, and verse key:
+ *   The 'id' column in the database is the index, and is unique
+ *   A 'vid' or 'Verse ID' is a string in the form 'bookNum-chapterNum-verseNum',
+ *     which can uniquely idenfity a verse and is more human readable
+ *   The 'key' is a React key
  */
 
 export interface IVerse {
+  // The ID in the database
+  id: number;
+
+  // The number of the book, e.g. Genesis is 1, Exodus is 2
   bookNum: number;
+
+  // The chapter number
   chapterNum: number;
+
+  // The verse number
   verseNum: number;
+
+  // The string name of the book, e.g. "Genesis"
   bookName: string;
+
+  // The string abbreviation of the book, e.g. "Gen"
   bookShortName: string;
+
+  // The text of the verse, e.g. "Jesus wept"
   verseText: string;
-}
-
-export class Verse implements IVerse {
-  public constructor(
-    public bookNum: number,
-    public chapterNum: number,
-    public verseNum: number,
-    public bookName: string,
-    public bookShortName: string,
-    public verseText: string
-  ) {}
-
-  public key() {
-    return verseKey(this);
-  }
 }
 
 /* A Verse ID table
