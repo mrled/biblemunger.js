@@ -2,6 +2,9 @@ import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Munge from "components/Munge";
+import { InternalLink } from "components/Links";
+import { FavoriteSearches } from "lib/FavoriteSearches";
+import { MungeLinkList } from "components/MungeLink";
 
 export default function Home() {
   return (
@@ -35,13 +38,18 @@ export default function Home() {
           provocative text replacement in famous literature
         </p>
 
-        <div>
-          <p>Suggestions:</p>
-          <Link href="/munge/Aaron/Shrek">
-            <a>Aaron ⇒ Shrek</a>
-          </Link>
+        <div className="m-4">
+          <InternalLink href="/about">wtf?</InternalLink>
         </div>
+
         <Munge />
+
+        <div>
+          <p className="my-2">Suggestions:</p>
+          <div className="text-xs my-2">
+            <MungeLinkList pairs={FavoriteSearches} />
+          </div>
+        </div>
       </main>
     </div>
   );
