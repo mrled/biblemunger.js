@@ -7,8 +7,16 @@ import { IMungePair } from "./MungePair";
 export const FavoriteSearches: IMungePair[] = [
   { search: "hearts", replace: "feels" },
   { search: "stronger", replace: "swoler" },
-  { search: "smite", replace: "fuck over" },
+  { search: "smote", replace: "yeeted" },
+  { search: "wine", replace: "whiteclaws" },
+  { search: "horse", replace: "harley" },
+  { search: "commandments", replace: "EULA" },
+  { search: "messenger", replace: "mailer daemon" },
+  { search: "Pharisees", replace: "Hipsters and Nerds" },
   { search: "thy salvation", replace: "dat ass" },
+  { search: "thy salvation", replace: "a good dicking down" },
+  { search: "nay", replace: "ok boomer" },
+  { search: "glory", replace: "meme magic" },
   { search: "staff", replace: "dick" },
   { search: "LORD", replace: "KickStarter backer" },
   { search: "tithe", replace: "ass, grass, or cash" },
@@ -17,4 +25,5 @@ export const FavoriteSearches: IMungePair[] = [
   { search: "Behold", replace: "Look, buddy" },
   { search: "father", replace: "daddi" },
   { search: "shoes", replace: "fly kicks" },
+  { search: "Aaron", replace: "Shrek" },
 ];
