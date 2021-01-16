@@ -1,7 +1,8 @@
 import React from "react";
 
-import { IVerse, verseKey } from "lib/Verse";
+import { IVerse, verseKey, vid } from "lib/Verse";
 import { sanitizeHtml } from "lib/Sanitize";
+import { InternalLink } from "./Links";
 
 type VerseRowProps = {
   verse: IVerse;
@@ -18,9 +19,11 @@ export function VerseRow({ verse, search, replace }: VerseRowProps) {
 
   return (
     <>
-      <div className="">
-        {verse.bookName} {verse.chapterNum}:{verse.verseNum}
-      </div>
+      <InternalLink href={`/munge/${search}/${replace}/${vid(verse)}`}>
+        <div className="">
+          {verse.bookName} {verse.chapterNum}:{verse.verseNum}
+        </div>
+      </InternalLink>
       <div dangerouslySetInnerHTML={{ __html: verseTextReplacedHtml }} />
     </>
   );
