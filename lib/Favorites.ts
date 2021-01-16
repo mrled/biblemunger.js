@@ -2,8 +2,10 @@
  * Useful to suggest things to unimaginitive users
  */
 
-import { IMungePair } from "./MungePair";
+import { IMungePair, IMungePairVerse } from "./MungePair";
 
+/* Favorite whole-Bible munges
+ */
 export const FavoriteSearches: IMungePair[] = [
   { search: "hearts", replace: "feels" },
   { search: "stronger", replace: "swoler" },
@@ -26,4 +28,15 @@ export const FavoriteSearches: IMungePair[] = [
   { search: "father", replace: "daddi" },
   { search: "shoes", replace: "fly kicks" },
   { search: "Aaron", replace: "Shrek" },
+];
+
+/* Favorite single-verse munges
+ * Possibly these will be nice examples to explain to users how it works
+ */
+export const FavoriteMungedVerses: IMungePairVerse[] = [
+  {
+    search: "messengers",
+    replace: "mailer daemons",
+    verseId: { bookNum: 20, chapterNum: 16, verseNum: 14 },
+  }, // Proverbs 16:14
 ];

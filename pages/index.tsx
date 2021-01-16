@@ -1,9 +1,8 @@
 import React from "react";
 import Head from "next/head";
-import Link from "next/link";
 import Munge from "components/Munge";
 import { InternalLink } from "components/Links";
-import { FavoriteSearches } from "lib/FavoriteSearches";
+import { FavoriteSearches } from "lib/Favorites";
 import { MungeLinkList } from "components/MungeLink";
 
 export default function Home() {
