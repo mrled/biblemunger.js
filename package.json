@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "buildall": "node kjv.xml2sqlite.js && next build",
     "start": "next start",
     "kjv2sqlite": "node kjv.xml2sqlite.js"
   },
