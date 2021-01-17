@@ -9,6 +9,7 @@
     "kjv2sqlite": "node kjv.xml2sqlite.js"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "jsdom": "^16.4.0",
     "next": "10.0.5",
     "react": "17.0.1",

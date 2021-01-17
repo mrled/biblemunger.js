@@ -25,12 +25,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 export default function MungeSingleVerse({ search, replace, verse }) {
   const verseLabel = `${verse.bookName} ${verse.chapterNum}:${verse.verseNum}`;
   return (
-    <div>
+    <main className="p-2 overflow-hidden max-w-3xl border-l-6 border-double border-redletter mt-2pct mb-0 mx-auto">
       <p className="text-xl bold">
         {search} ⇒ {replace}
       </p>
       <p className="text-lg">{verseLabel}</p>
       <VersesList verses={[verse]} search={search} replace={replace} />
-    </div>
+    </main>
   );
 }

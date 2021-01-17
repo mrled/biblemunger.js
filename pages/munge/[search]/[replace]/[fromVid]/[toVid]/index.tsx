@@ -40,7 +40,8 @@ export default function MungePassage({
   const fromVerseLabel = `${fromVerse.bookName} ${fromVerse.chapterNum}:${fromVerse.verseNum}`;
   const toVerseLabel = `${toVerse.bookName} ${toVerse.chapterNum}:${toVerse.verseNum}`;
   return (
-    <div>
+    <main className="p-2 overflow-hidden max-w-3xl border-l-6 border-double border-redletter mt-2pct mb-0 mx-auto">
+      {" "}
       <p className="text-xl bold">
         {search} ⇒ {replace}
       </p>
@@ -48,6 +49,6 @@ export default function MungePassage({
         In passage {fromVerseLabel} -- {toVerseLabel}
       </p>
       <VersesList verses={passage} search={search} replace={replace} />
-    </div>
+    </main>
   );
 }

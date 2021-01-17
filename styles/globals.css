@@ -2,12 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "KJV1611";
+  src: local("KJV1611"), url("/fonts/KJV1611.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: "Eczar";
+  src: local("Eczar-Regular"),
+    url("/fonts/Eczar/Eczar-Regular.ttf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: "Dearest Outline";
+  src: local("Dearest Outline"),
+    url("/fonts/dearest1/Dearest outline.ttf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: var(--color-sepia);
 }
 
 a {
@@ -17,4 +42,55 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+:root {
+  --color-redletter: #a10104;
+  --color-sepia: #efebd8;
+  --color-almostblack: #1a160d; /* can I just use black? */
+}
+
+.border-l-6 {
+  border-left-width: 6px;
+}
+.border-r-6 {
+  border-right-width: 6px;
+}
+.border-b-6 {
+  border-bottom-width: 6px;
+}
+.border-t-6 {
+  border-top-width: 6px;
+}
+.border-6 {
+  border-width: 6px;
+}
+
+/* Tailwind-like color classes
+ */
+.border-redletter {
+  border-color: var(--color-redletter);
+}
+.text-redletter {
+  color: var(--color-redletter);
+}
+.bg-redletter {
+  background-color: var(--color-redletter);
+}
+/* .bg-sepia {
+  background-color: var(--color-sepia);
+} */
+
+.font-kjv1611 {
+  font-family: KJV1611;
+}
+.font-eczar {
+  font-family: Eczar, serif;
+}
+.font-dearest-outline {
+  font-family: "Dearest Outline";
+}
+
+.mt-2pct {
+  margin-top: 2%;
 }

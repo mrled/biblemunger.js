@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import Munge from "components/Munge";
+import Munge from "components/MungeForm";
 import { InternalLink } from "components/Links";
 import { FavoriteSearches } from "lib/Favorites";
 import { MungeLinkList } from "components/MungeLink";
@@ -41,14 +41,9 @@ export default function Home() {
           <InternalLink href="/about">wtf?</InternalLink>
         </div>
 
-        <Munge />
-
-        <div>
-          <p className="my-2">Suggestions:</p>
-          <div className="text-xs my-2">
-            <MungeLinkList pairs={FavoriteSearches} />
-          </div>
-        </div>
+        <InternalLink href="/munge">
+          <p>Munge your own</p>
+        </InternalLink>
       </main>
     </div>
   );
