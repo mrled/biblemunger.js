@@ -37,8 +37,8 @@ INSERT INTO ${versesTable}(
 ) VALUES (?, ?, ?, ?, ?, ?, ?);
 `;
 
-  const kjvVersesArr = verses.map((v, idx) => [
-    idx,
+  const kjvVersesArr = verses.map((v) => [
+    v.verseIdx,
     v.bookNum,
     v.chapterNum,
     v.verseNum,
@@ -75,6 +75,7 @@ function getVerses(xmlFile) {
     (elem) => elem.name === "BIBLEBOOK"
   );
   //console.log(JSON.stringify(biblebook, undefined, 2));
+  let verseIdx = 0;
   biblebook.forEach((bookElem) => {
     const bookName = bookElem.attributes.bname;
     const bookNum = bookElem.attributes.bnumber;
@@ -98,6 +99,7 @@ function getVerses(xmlFile) {
         // console.log(`${bookName} ${chapterNum}:${verseNum} -- ${verseText}`);
 
         versesResult.push({
+          verseIdx,
           bookName,
           bookNum,
           bookShortName,
@@ -105,6 +107,8 @@ function getVerses(xmlFile) {
           verseNum,
           verseText,
         });
+
+        verseIdx += 1;
       });
     });
   });
