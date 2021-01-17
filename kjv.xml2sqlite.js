@@ -1,8 +1,17 @@
 var fs = require("fs");
+const process = require("process");
 var convert = require("xml-js");
 var sqlite3 = require("sqlite3");
 
 var kjvxml = fs.readFileSync("kjv.xml");
+const dbPath = "database/kjv.sqlite";
+
+// TODO: Make this configurable
+// If it detects an existing database file, just exit.
+// This is just a test to see if we can cut down Vercel deployment times.
+if (fs.accessSync) {
+  process.exit(0);
+}
 
 // Convert to a JSON file
 //var kjvjson = convert.xml2json(kjvxml, { compact: true, spaces: 2 });
@@ -89,7 +98,7 @@ const kjvVersesArr = kjvVerses.map((v, idx) => [
   v.verseText,
 ]);
 
-var db = new sqlite3.Database("database/kjv.sqlite");
+var db = new sqlite3.Database(dbPath);
 db.serialize(() => {
   db.exec(`DROP TABLE IF EXISTS ${kjvTableName}`);
   db.exec(createTableStatement);
