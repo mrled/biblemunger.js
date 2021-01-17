@@ -3,13 +3,16 @@ import sqlite from "sqlite";
 import { open } from "sqlite";
 import { IVerse, IVidTable } from "./Verse";
 
-const DatabasePath = "database/kjv.sqlite";
+const DatabaseRelativePath = `database/kjv.sqlite`;
 
 export const KjvTableName = "kjv";
 
 export async function OpenDatabase() {
+  const path = require("path");
+  const process = require("process");
+  const dbPath = path.join(process.cwd(), DatabaseRelativePath);
   const db = await open({
-    filename: DatabasePath,
+    filename: path.resolve(dbPath),
     driver: sqlite3.Database,
   });
   return db;
