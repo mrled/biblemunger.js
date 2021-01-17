@@ -9,9 +9,9 @@ const dbPath = "database/kjv.sqlite";
 // TODO: Make this configurable
 // If it detects an existing database file, just exit.
 // This is just a test to see if we can cut down Vercel deployment times.
-if (fs.accessSync) {
-  process.exit(0);
-}
+// if (fs.accessSync) {
+//   process.exit(0);
+// }
 
 // Convert to a JSON file
 //var kjvjson = convert.xml2json(kjvxml, { compact: true, spaces: 2 });

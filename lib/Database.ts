@@ -11,6 +11,7 @@ export async function OpenDatabase() {
   const path = require("path");
   const process = require("process");
   const dbPath = path.join(process.cwd(), DatabaseRelativePath);
+  console.log(`lib/Database looking for sqlite file at ${dbPath}`);
   const db = await open({
     filename: path.resolve(dbPath),
     driver: sqlite3.Database,
