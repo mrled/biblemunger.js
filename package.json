@@ -7,10 +7,10 @@
     "build": "next build",
     "buildall": "node kjv.xml2sqlite.js && next build",
     "buildstart": "next build && next start",
-    "start": "next start",
-    "kjv2sqlite": "node kjv.xml2sqlite.js"
+    "start": "next start"
   },
   "dependencies": {
+    "argparse": "^2.0.1",
     "classnames": "^2.2.6",
     "jsdom": "^16.4.0",
     "next": "10.0.5",
