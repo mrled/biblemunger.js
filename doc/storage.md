@@ -30,3 +30,9 @@ It is very unclear how sql.js is supposed to work with React:
 - <https://github.com/sql-js/react-sqljs-demo> is the official React docs (??) and I have no idea what I'm supposed to do here
 
 Going to give up on this for now.
+
+### Inconsistent performance on Vercel
+
+Later re-testing of some of the numbers I found above resulted in much _faster_ response times for Vercel doing sqlite searches on the server. At the moment I am able to see munges with dozens or hundreds of results less than a second. It feels about like it does on the old Python version, maybe a hair slower, maybe not.
+
+I'm not sure what's going on here.
