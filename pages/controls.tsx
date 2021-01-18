@@ -7,8 +7,44 @@ import {
   ScriptureFontOptions,
   ScriptureDropcapFontOptions,
   useAppSettings,
+  UiRedButtonFontOptions,
 } from "hooks/useAppSettings";
 import { InternalLink } from "components/Links";
+
+type FontSelectorTableRowProps = {
+  label: string;
+  fontValue: string;
+  setFont: (newValue: string) => void;
+  fontOptions: { [key: string]: string };
+};
+function FontSelectorTableRow({
+  label,
+  fontValue,
+  setFont,
+  fontOptions,
+}: FontSelectorTableRowProps) {
+  return (
+    <div className="table-row">
+      <label
+        htmlFor="scripture-dropcap-font-selector"
+        className="p-2 m-2 text-xs table-cell"
+      >
+        {label}
+      </label>
+      <select
+        onChange={(event) => setFont(event.target.value)}
+        value={fontValue}
+        name={label}
+        id="scripture-dropcap-font-selector"
+        className="p-2 m-2 text-xs table-cell border"
+      >
+        {Object.keys(fontOptions).map((fontName) => (
+          <option value={fontOptions[fontName]}>{fontName}</option>
+        ))}
+      </select>
+    </div>
+  );
+}
 
 export default function Controls() {
   const {
@@ -16,6 +52,8 @@ export default function Controls() {
     setScriptureFont,
     scriptureDropcapFont,
     setScriptureDropcapFont,
+    uiRedButtonFont,
+    setUiRedButtonFont,
   } = useAppSettings();
 
   return (
@@ -26,49 +64,26 @@ export default function Controls() {
       <main className="py-20 overflow-hidden min-h-screen max-w-xl mx-auto">
         This is a secret. <InternalLink href="/">Return to safety</InternalLink>
         <div className="mt-4 table">
-          <div className="table-row">
-            <label
-              htmlFor="scripture-font-selector"
-              className="p-2 m-2 text-xs table-cell"
-            >
-              Scripture font
-            </label>
-            <select
-              onChange={(event) => setScriptureFont(event.target.value)}
-              value={scriptureFont}
-              name="Scripture font"
-              id="scripture-font-selector"
-              className="p-2 m-2 text-xs table-cell border"
-            >
-              {Object.keys(ScriptureFontOptions).map((fontName) => (
-                <option value={ScriptureFontOptions[fontName]}>
-                  {fontName}
-                </option>
-              ))}
-            </select>
-          </div>
+          <FontSelectorTableRow
+            label="Scripture font"
+            fontValue={scriptureFont}
+            setFont={setScriptureFont}
+            fontOptions={ScriptureFontOptions}
+          />
 
-          <div className="table-row">
-            <label
-              htmlFor="scripture-dropcap-font-selector"
-              className="p-2 m-2 text-xs table-cell"
-            >
-              Dropcap font
-            </label>
-            <select
-              onChange={(event) => setScriptureDropcapFont(event.target.value)}
-              value={scriptureDropcapFont}
-              name="Scripture font"
-              id="scripture-dropcap-font-selector"
-              className="p-2 m-2 text-xs table-cell border"
-            >
-              {Object.keys(ScriptureDropcapFontOptions).map((fontName) => (
-                <option value={ScriptureDropcapFontOptions[fontName]}>
-                  {fontName}
-                </option>
-              ))}
-            </select>
-          </div>
+          <FontSelectorTableRow
+            label="Scripture dropcap font"
+            fontValue={scriptureDropcapFont}
+            setFont={setScriptureDropcapFont}
+            fontOptions={ScriptureDropcapFontOptions}
+          />
+
+          <FontSelectorTableRow
+            label="Red button font"
+            fontValue={uiRedButtonFont}
+            setFont={setUiRedButtonFont}
+            fontOptions={UiRedButtonFontOptions}
+          />
         </div>
       </main>
     </>
