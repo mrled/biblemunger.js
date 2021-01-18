@@ -2,7 +2,7 @@ import React from "react";
 import { GetServerSideProps } from "next";
 
 import { parseVid } from "lib/Verse";
-import { lookupVid } from "lib/BibleJson";
+import { lookupVid } from "lib/BibleSqlite";
 import { VersesList } from "components/Verse";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
