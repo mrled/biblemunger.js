@@ -10,7 +10,7 @@ type VerseRowProps = {
   replace: string;
 };
 export function VerseRow({ verse, search, replace }: VerseRowProps) {
-  const mungedClasses = "munged text-red-600";
+  const mungedClasses = "munged text-redletter";
   const sanitizedReplace = sanitizeHtml(replace);
   const verseTextReplacedHtml = verse.verseText.replace(
     new RegExp(search, "g"),
