@@ -74,6 +74,9 @@ a {
 .text-redletter {
   color: var(--color-redletter);
 }
+.text-redletter-dropcap:first-child:first-letter {
+  color: var(--color-redletter);
+}
 .bg-redletter {
   background-color: var(--color-redletter);
 }
@@ -89,6 +92,13 @@ a {
 }
 .font-dearest-outline {
   font-family: "Dearest Outline";
+}
+.font-dearest-outline-dropcap:first-child:first-letter {
+  float: left;
+  font-size: 400%;
+  line-height: 1;
+  font-family: "Dearest Outline", Georgia;
+  text-transform: uppercase;
 }
 
 .mt-2pct {

@@ -76,11 +76,23 @@ export function SiteHead(props: SiteHeadProps) {
 export function SitePageHeader() {
   return (
     <header className="w-full p-2">
-      <Link href="/">
-        <a className="w-20 my-0 mx-auto block">
-          <img className="" src="/biblemunger-logo-1-noword.svg" />
-        </a>
-      </Link>
+      <div className="w-60 mx-auto flex">
+        <Link href="/munge">
+          <a className="my-0 mx-auto block flex">
+            <p className="text-3xl text-redletter">»</p>
+          </a>
+        </Link>
+        <Link href="/">
+          <a className="w-20 my-0 mx-auto block flex">
+            <img className="" src="/biblemunger-logo-1-noword.svg" />
+          </a>
+        </Link>
+        <Link href="/wtf">
+          <a className="my-0 mx-auto block flex">
+            <p className="text-3xl text-redletter">?</p>
+          </a>
+        </Link>
+      </div>
     </header>
   );
 }

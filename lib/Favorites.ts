@@ -39,4 +39,9 @@ export const FavoriteMungedVerses: IMungePairVerse[] = [
     replace: "mailer daemons",
     verseId: { bookNum: 20, chapterNum: 16, verseNum: 14 },
   }, // Proverbs 16:14
+  {
+    search: "smite",
+    replace: "fuck over",
+    verseId: { bookNum: 2, chapterNum: 12, verseNum: 23 },
+  }, // Exodus 12:23
 ];
