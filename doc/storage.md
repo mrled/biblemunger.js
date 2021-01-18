@@ -17,3 +17,16 @@ I wrote a JSON database to test against. It is not optimized, as it is mostly pa
 I could optimize the much slower search/replace/fromvid/tovid case with a lookup table for vids->verse indeces, or perhaps by redesigning the whole app to use verse indeces exclusively and deprecating vids.
 
 However, the text replacement time for whole-bible search/replace is probably not fixable, and it's still pretty bad. Using JavaScript to search through every verse for the search term is just slower than using sql.
+
+### sql.js experiment
+
+I spent some time trying to use sql.js for _client-side_ sqlite searches, but without any luck.
+
+Whenever I ran `initSqlJs` I would get an error about not being able to find the `fs` module -- even when running e.g. `next build` which compiles the project using Node, which has an `fs` module.
+
+It is very unclear how sql.js is supposed to work with React:
+
+- <https://github.com/vercel/next.js/issues/9454> ??
+- <https://github.com/sql-js/react-sqljs-demo> is the official React docs (??) and I have no idea what I'm supposed to do here
+
+Going to give up on this for now.
