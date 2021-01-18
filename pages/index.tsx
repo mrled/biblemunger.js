@@ -4,23 +4,13 @@ import Munge from "components/MungeForm";
 import { InternalLink } from "components/Links";
 import { FavoriteSearches } from "lib/Favorites";
 import { MungeLinkList } from "components/MungeLink";
+import { SiteHead, SitePageHeader } from "components/SiteChrome";
 
 export default function Home() {
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        padding: "0 flex0.5rem",
-        display: "",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Head>
-        <title>biblemunger</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      <SiteHead title="biblemunger: provocative text replacement in famous literature" />
+      <SitePageHeader />
 
       <main
         style={{
@@ -32,19 +22,30 @@ export default function Home() {
           alignItems: "center",
         }}
       >
-        <h1 className="m-0 text-4xl">biblemunger</h1>
-        <p className="text-xs italic">
-          provocative text replacement in famous literature
-        </p>
+        <div
+          style={{
+            minHeight: "100vh",
+            padding: "0 flex0.5rem",
+            display: "",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <h1 className="m-0 text-4xl">biblemunger</h1>
+          <p className="text-xs italic">
+            provocative text replacement in famous literature
+          </p>
 
-        <div className="m-4">
-          <InternalLink href="/about">wtf?</InternalLink>
+          <div className="m-4">
+            <InternalLink href="/about">wtf?</InternalLink>
+          </div>
+
+          <InternalLink href="/munge">
+            <p>Munge your own</p>
+          </InternalLink>
         </div>
-
-        <InternalLink href="/munge">
-          <p>Munge your own</p>
-        </InternalLink>
       </main>
-    </div>
+    </>
   );
 }
