@@ -3,7 +3,7 @@ import { GetServerSideProps } from "next";
 
 import { parseVid } from "lib/Verse";
 import { lookupPassage, lookupVid } from "lib/BibleSqlite";
-import { VersesList } from "components/Verse";
+import { VersesList } from "components/VerseList";
 import { SiteHead, SitePageHeader } from "components/SiteChrome";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

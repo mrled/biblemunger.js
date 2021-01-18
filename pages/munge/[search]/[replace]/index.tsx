@@ -2,7 +2,7 @@ import React from "react";
 import { GetServerSideProps } from "next";
 
 import { concordance } from "lib/BibleSqlite";
-import { VersesList } from "components/Verse";
+import { VersesList } from "components/VerseList";
 import { SiteHead, SitePageHeader } from "components/SiteChrome";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
