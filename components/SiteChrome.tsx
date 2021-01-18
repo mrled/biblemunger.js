@@ -76,7 +76,7 @@ export function SiteHead(props: SiteHeadProps) {
 export function SitePageHeader() {
   return (
     <header className="w-full p-2">
-      <div className="w-60 mx-auto flex">
+      <div className="w-60 h-20 mx-auto flex">
         <Link href="/munge">
           <a className="my-0 mx-auto block flex">
             <p className="text-3xl text-redletter">»</p>
