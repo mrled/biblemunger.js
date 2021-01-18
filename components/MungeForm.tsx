@@ -2,23 +2,25 @@ import React, { FormEvent, useState } from "react";
 import { useRouter } from "next/router";
 
 import classNames from "classnames";
+import { useAppSettings } from "hooks/useAppSettings";
 
 export default function MungePage() {
+  const { uiRedButtonFont } = useAppSettings();
   const router = useRouter();
   const [search, setSearch] = useState<string>("");
   const [replace, setReplace] = useState<string>("");
   const validSearch = search !== "" && replace !== "";
 
   const submitButtonClasses = classNames(
-    "block p-8 text-3xl text-center text-white px-6 py-4 font-eczar uppercase rounded-b-3xl bg-redletter tracking-widest mx-auto",
+    "block p-8 text-3xl text-center text-white px-6 py-4 uppercase rounded-b-3xl bg-redletter tracking-widest mx-auto",
     {
       " hover:cursor-pointer": validSearch,
       " hover:cursor-not-allowed": !validSearch,
-    }
+    },
+    uiRedButtonFont
   );
 
-  const inputFieldClasses =
-    "w-5/12 inline-block mx-1 px-2 py-2 border-redletter border-6 border-solid text-2xl font-eczar leading-4 text-center bg-transparent";
+  const inputFieldClasses = `${uiRedButtonFont} w-5/12 inline-block mx-1 px-2 py-2 border-redletter border-6 border-solid text-2xl  leading-4 text-center bg-transparent`;
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

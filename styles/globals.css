@@ -85,19 +85,26 @@ a {
 } */
 
 .font-kjv1611 {
-  font-family: KJV1611;
+  font-family: KJV1611, serif;
 }
 .font-eczar {
   font-family: Eczar, serif;
 }
-.font-dearest-outline {
-  font-family: "Dearest Outline";
+.font-source-sans-pro .font-dearest-outline {
+  font-family: "Dearest Outline", Georgia;
 }
 .font-dearest-outline-dropcap:first-child:first-letter {
   float: left;
   font-size: 400%;
   line-height: 1;
   font-family: "Dearest Outline", Georgia;
+  text-transform: uppercase;
+}
+.font-kjv1611-dropcap:first-child:first-letter {
+  float: left;
+  font-size: 400%;
+  line-height: 1;
+  font-family: KJV1611, Georgia;
   text-transform: uppercase;
 }
 
