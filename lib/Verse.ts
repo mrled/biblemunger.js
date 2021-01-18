@@ -61,3 +61,15 @@ export function vid(verse: IVerse): string {
 export function verseKey(verse: IVerse): string {
   return vid(verse);
 }
+
+/* Given two objects which implement IVidTable
+ * (which might be just a vid table, or might be a whole IVerse),
+ * do they reference the same verse?
+ */
+export function referenceEq(verse1: IVidTable, verse2: IVidTable) {
+  return (
+    verse1.bookNum == verse2.bookNum &&
+    verse1.chapterNum == verse2.chapterNum &&
+    verse1.verseNum == verse2.verseNum
+  );
+}

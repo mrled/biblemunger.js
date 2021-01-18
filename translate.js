@@ -121,8 +121,11 @@ function getVerses(xmlFile) {
 function xml2jsonAction(xmlPath, jsonPath) {
   // console.log(`xml2jsonAction(${xmlPath}, ${jsonPath})`);
   const kjvVerses = getVerses(xmlPath);
+  const kjv = {
+    verses: kjvVerses,
+  };
   // console.log(JSON.stringify(kjvVerses));
-  fs.writeFileSync(jsonPath, JSON.stringify(kjvVerses, undefined, 2));
+  fs.writeFileSync(jsonPath, JSON.stringify(kjv, undefined, 2));
 }
 
 function xml2dbAction(xmlPath, dbPath, tableName, skipIfExists) {

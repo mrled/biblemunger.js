@@ -1,15 +1,12 @@
 import React from "react";
 import { GetServerSideProps } from "next";
 
-import { IVerse } from "lib/Verse";
-import { OpenDatabase, concordance } from "lib/Database";
+import { concordance } from "lib/BibleJson";
 import { VersesList } from "components/Verse";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { search, replace } = context.params;
-  const sqlQueryLike = `%${search}%`;
-  const db = await OpenDatabase();
-  const result = await concordance(db, sqlQueryLike);
+  const result = await concordance(search as string);
   console.log(
     `getServerSideProps() in /munge/${search}/${replace}, got ${result.length} results`
   );

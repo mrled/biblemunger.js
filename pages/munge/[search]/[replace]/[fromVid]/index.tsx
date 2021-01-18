@@ -2,7 +2,7 @@ import React from "react";
 import { GetServerSideProps } from "next";
 
 import { parseVid } from "lib/Verse";
-import { lookupVid, OpenDatabase } from "lib/Database";
+import { lookupVid } from "lib/BibleJson";
 import { VersesList } from "components/Verse";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -10,8 +10,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const vidTable = parseVid(fromVid as string);
 
-  const db = await OpenDatabase();
-  const verse = await lookupVid(db, vidTable);
+  const verse = await lookupVid(vidTable);
 
   return {
     props: {

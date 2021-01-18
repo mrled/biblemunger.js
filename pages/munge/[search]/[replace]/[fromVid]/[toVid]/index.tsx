@@ -2,7 +2,7 @@ import React from "react";
 import { GetServerSideProps } from "next";
 
 import { parseVid } from "lib/Verse";
-import { lookupPassage, lookupVid, OpenDatabase } from "lib/Database";
+import { lookupPassage, lookupVid } from "lib/BibleJson";
 import { VersesList } from "components/Verse";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -11,10 +11,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const fromVidTable = parseVid(fromVid as string);
   const toVidTable = parseVid(toVid as string);
 
-  const db = await OpenDatabase();
-  const fromVerse = await lookupVid(db, fromVidTable);
-  const toVerse = await lookupVid(db, toVidTable);
-  const passage = await lookupPassage(db, fromVerse, toVerse);
+  const fromVerse = await lookupVid(fromVidTable);
+  const toVerse = await lookupVid(toVidTable);
+  const passage = await lookupPassage(fromVerse, toVerse);
 
   console.log(
     `getServerSideProps() in /munge/${search}/${replace}/${fromVid}/${toVid}, got ${passage.length} results`

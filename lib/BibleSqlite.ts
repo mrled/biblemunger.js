@@ -7,27 +7,27 @@ const DatabaseRelativePath = `database/kjv.sqlite`;
 
 export const KjvTableName = "kjv";
 
-export async function OpenDatabase() {
+function OpenDatabase(): Promise<
+  sqlite.Database<sqlite3.Database, sqlite3.Statement>
+> {
   const path = require("path");
   const process = require("process");
   const dbPath = path.join(process.cwd(), DatabaseRelativePath);
   console.log(`lib/Database looking for sqlite file at ${dbPath}`);
-  const db = await open({
+  const dbPromise = open({
     filename: path.resolve(dbPath),
     driver: sqlite3.Database,
   });
-  return db;
+  return dbPromise;
 }
 
 /* Find all verses containing a string
  */
-export async function concordance(
-  db: sqlite.Database<sqlite3.Database, sqlite3.Statement>,
-  textLike: string
-): Promise<IVerse[]> {
+export async function concordance(textLike: string): Promise<IVerse[]> {
+  const db = await OpenDatabase();
   const result = await db.all<IVerse[]>(
     `SELECT id, bookNum, chapterNum, verseNum, bookName, bookShortName, verseText FROM ${KjvTableName} WHERE verseText LIKE ?`,
-    textLike
+    `%${textLike}%`
   );
   console.log(`VerseTextLike(${textLike}) returned ${result.length} results`);
   return result;
@@ -35,10 +35,8 @@ export async function concordance(
 
 /* Given a VidTable, return a single verse
  */
-export async function lookupVid(
-  db: sqlite.Database<sqlite3.Database, sqlite3.Statement>,
-  vidTable: IVidTable
-): Promise<IVerse> {
+export async function lookupVid(vidTable: IVidTable): Promise<IVerse> {
+  const db = await OpenDatabase();
   const result = await db.get<IVerse>(
     `SELECT id, bookNum, chapterNum, verseNum, bookName, bookShortName, verseText FROM ${KjvTableName} WHERE bookNum = $bookNum AND chapterNum = $chapterNum AND verseNum = $verseNum`,
     {
@@ -53,12 +51,12 @@ export async function lookupVid(
 /* Return the whole passage between two verses, given two VidTables
  */
 export async function lookupPassage(
-  db: sqlite.Database<sqlite3.Database, sqlite3.Statement>,
   startVidTable: IVidTable,
   endVidTable: IVidTable
 ): Promise<IVerse[]> {
-  const fromResult = await lookupVid(db, startVidTable);
-  const toResult = await lookupVid(db, endVidTable);
+  const db = await OpenDatabase();
+  const fromResult = await lookupVid(startVidTable);
+  const toResult = await lookupVid(endVidTable);
   const passageResult = await db.all<IVerse[]>(
     `SELECT id, bookNum, chapterNum, verseNum, bookName, bookShortName, verseText FROM ${KjvTableName} WHERE id >= $fromId AND id <= $toId`,
     {
