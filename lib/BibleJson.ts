@@ -7,7 +7,9 @@
 
 import { IVerse, IVidTable, referenceEq } from "./Verse";
 
-import Kjv from "database/kjv.json";
+import KjvRaw from "database/kjv.json";
+
+const Kjv = (KjvRaw as unknown) as TKjv;
 
 type TKjv = {
   verses: IVerse[];
@@ -16,9 +18,7 @@ type TKjv = {
 /* Find all verses containing a string
  */
 export async function concordance(textLike: string): Promise<IVerse[]> {
-  const result = (<TKjv>Kjv).verses.filter((v) =>
-    v.verseText.includes(textLike)
-  );
+  const result = Kjv.verses.filter((v) => v.verseText.includes(textLike));
   return new Promise((resolve, _reject) => {
     resolve(result);
   });
@@ -27,7 +27,7 @@ export async function concordance(textLike: string): Promise<IVerse[]> {
 /* Given a VidTable, return a single verse
  */
 export async function lookupVid(vidTable: IVidTable): Promise<IVerse> {
-  const result = (<TKjv>Kjv).verses.filter((v) => referenceEq(v, vidTable));
+  const result = Kjv.verses.filter((v) => referenceEq(v, vidTable));
   return new Promise((resolve, reject) => {
     if (result.length == 1) {
       resolve(result[0]);
@@ -47,7 +47,7 @@ export async function lookupPassage(
 ): Promise<IVerse[]> {
   let foundStartVerse: boolean = false;
   let results: IVerse[] = [];
-  (<TKjv>Kjv).verses.every((verse) => {
+  Kjv.verses.every((verse) => {
     if (!foundStartVerse) {
       if (referenceEq(verse, startVidTable)) {
         foundStartVerse = true;
