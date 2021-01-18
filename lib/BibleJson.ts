@@ -16,7 +16,7 @@ type TKjv = {
 /* Find all verses containing a string
  */
 export async function concordance(textLike: string): Promise<IVerse[]> {
-  const result = ((Kjv as unknown) as TKjv).verses.filter((v) =>
+  const result = (<TKjv>Kjv).verses.filter((v) =>
     v.verseText.includes(textLike)
   );
   return new Promise((resolve, _reject) => {
@@ -27,9 +27,7 @@ export async function concordance(textLike: string): Promise<IVerse[]> {
 /* Given a VidTable, return a single verse
  */
 export async function lookupVid(vidTable: IVidTable): Promise<IVerse> {
-  const result = ((Kjv as unknown) as TKjv).verses.filter((v) =>
-    referenceEq(v, vidTable)
-  );
+  const result = (<TKjv>Kjv).verses.filter((v) => referenceEq(v, vidTable));
   return new Promise((resolve, reject) => {
     if (result.length == 1) {
       resolve(result[0]);
@@ -49,7 +47,7 @@ export async function lookupPassage(
 ): Promise<IVerse[]> {
   let foundStartVerse: boolean = false;
   let results: IVerse[] = [];
-  ((Kjv as unknown) as TKjv).verses.every((verse) => {
+  (<TKjv>Kjv).verses.every((verse) => {
     if (!foundStartVerse) {
       if (referenceEq(verse, startVidTable)) {
         foundStartVerse = true;
