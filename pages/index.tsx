@@ -1,11 +1,10 @@
 import React from "react";
 import { GetServerSideProps } from "next";
 
-import { InternalLink } from "components/Links";
 import { FavoriteMungedVerses } from "lib/Favorites";
 import { SiteHead, SitePageHeader } from "components/SiteChrome";
 import { lookupVid } from "lib/BibleSqlite";
-import { VerseSingle, VerseSinglePage } from "components/VerseSingle";
+import { VerseSingle } from "components/VerseSingle";
 import { ThisMungeWithExpandLink } from "components/ThisMunge";
 import MungeYourOwn from "components/MungeYourOwnButton";
 
