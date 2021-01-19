@@ -83,7 +83,7 @@ export const FavoriteMungedVerses: IMungePairVerse[] = [
     search: "Behold,",
     replace: "Oh shit!",
     verseId: { bookNum: 38, chapterNum: 14, verseNum: 1 },
-  },
+  }, // Zechariah 14:1
   {
     search: "behold",
     replace: "look buddy",
