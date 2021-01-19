@@ -44,4 +44,49 @@ export const FavoriteMungedVerses: IMungePairVerse[] = [
     replace: "fuck over",
     verseId: { bookNum: 2, chapterNum: 12, verseNum: 23 },
   }, // Exodus 12:23
+  {
+    search: "thy salvation",
+    replace: "a good dicking down",
+    verseId: { bookNum: 19, chapterNum: 21, verseNum: 1 },
+  }, // Psalm 21:1
+  {
+    search: "smote",
+    replace: "yeeted",
+    verseId: { bookNum: 2, chapterNum: 8, verseNum: 17 },
+  }, // Exodus 8:17
+  {
+    search: "wine",
+    replace: "whiteclaws",
+    verseId: { bookNum: 49, chapterNum: 5, verseNum: 18 },
+  }, // Ephesians 5:18
+  {
+    search: "glory",
+    replace: "meme magic",
+    verseId: { bookNum: 42, chapterNum: 2, verseNum: 9 },
+  }, // Luke 2:9
+  {
+    search: "staff",
+    replace: "dick",
+    verseId: { bookNum: 19, chapterNum: 23, verseNum: 4 },
+  }, // Psalm 23:4
+  {
+    search: "Nay",
+    replace: "Ok boomer",
+    verseId: { bookNum: 9, chapterNum: 8, verseNum: 19 },
+  }, // 1 Samuel 8:19
+  {
+    search: "tithes",
+    replace: "ass, grass, or cash",
+    verseId: { bookNum: 42, chapterNum: 18, verseNum: 12 },
+  }, // Luke 18:12
+  {
+    search: "Behold,",
+    replace: "Oh shit!",
+    verseId: { bookNum: 38, chapterNum: 14, verseNum: 1 },
+  },
+  {
+    search: "behold",
+    replace: "look buddy",
+    verseId: { bookNum: 1, chapterNum: 17, verseNum: 4 },
+  }, // Genesis 17:4
 ];
