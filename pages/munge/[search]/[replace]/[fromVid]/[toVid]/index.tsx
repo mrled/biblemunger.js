@@ -3,8 +3,9 @@ import { GetServerSideProps } from "next";
 
 import { parseVid } from "lib/Verse";
 import { lookupPassage, lookupVid } from "lib/BibleSqlite";
-import { VersesList } from "components/VerseList";
+import { VersesListSimple } from "components/VerseListSimple";
 import { SiteHead, SitePageHeader } from "components/SiteChrome";
+import { ThisMunge } from "components/ThisMunge";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { search, replace, fromVid, toVid } = context.params;
@@ -45,15 +46,22 @@ export default function MungePassage({
         title={`biblemunger: (${fromVerseLabel}&mdash;${toVerseLabel}) ${search} ⇒ ${replace}`}
       />
       <SitePageHeader />
-      <main className="p-2 overflow-hidden max-w-3xl border-l-6 border-double border-redletter mt-2pct mb-0 mx-auto">
-        {" "}
-        <p className="text-xl bold">
-          {search} ⇒ {replace}
-        </p>
-        <p className="text-lg">
-          In passage {fromVerseLabel} -- {toVerseLabel}
-        </p>
-        <VersesList verses={passage} search={search} replace={replace} />
+      <main className="p-2 overflow-hidden max-w-3xl mt-2pct mb-0 mx-auto">
+        <div className="text-lg my-8 text-center">
+          <div>
+            <ThisMunge search={search} replace={replace} />
+          </div>
+          <p>
+            In passage {fromVerseLabel} &mdash; {toVerseLabel}
+          </p>
+        </div>
+        <div className="border-l-6 border-double border-redletter pl-4 my-8">
+          <VersesListSimple
+            verses={passage}
+            search={search}
+            replace={replace}
+          />
+        </div>
       </main>
     </>
   );

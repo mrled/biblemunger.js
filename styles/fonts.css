@@ -1,0 +1,66 @@
+/* Web fonts
+ */
+
+/* KJV1611
+ */
+@font-face {
+  font-family: "KJV1611";
+  src: local("KJV1611"), url("/fonts/KJV1611.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+
+/* Eczar
+ */
+@font-face {
+  font-family: "Eczar";
+  src: local("Eczar-Regular"),
+    url("/fonts/Eczar/Eczar-Regular.ttf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: "Eczar";
+  src: local("Eczar-Medium"),
+    url("/fonts/Eczar/Eczar-Medium.ttf") format("opentype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+}
+@font-face {
+  font-family: "Eczar";
+  src: local("Eczar-SemiBold"),
+    url("/fonts/Eczar/Eczar-SemiBold.ttf") format("opentype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+}
+@font-face {
+  font-family: "Eczar";
+  src: local("Eczar-Bold"),
+    url("/fonts/Eczar/Eczar-Bold.ttf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+}
+@font-face {
+  font-family: "Eczar";
+  src: local("Eczar-ExtraBold"),
+    url("/fonts/Eczar/Eczar-ExtraBold.ttf") format("opentype");
+  font-style: normal;
+  font-weight: 800;
+  font-display: block;
+}
+
+/* Dearest Outline
+ */
+@font-face {
+  font-family: "Dearest Outline";
+  src: local("Dearest Outline"),
+    url("/fonts/dearest1/Dearest outline.ttf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}

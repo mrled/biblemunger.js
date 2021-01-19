@@ -1,30 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@font-face {
-  font-family: "KJV1611";
-  src: local("KJV1611"), url("/fonts/KJV1611.otf") format("opentype");
-  font-style: normal;
-  font-weight: 400;
-  font-display: block;
-}
-@font-face {
-  font-family: "Eczar";
-  src: local("Eczar-Regular"),
-    url("/fonts/Eczar/Eczar-Regular.ttf") format("opentype");
-  font-style: normal;
-  font-weight: 400;
-  font-display: block;
-}
-@font-face {
-  font-family: "Dearest Outline";
-  src: local("Dearest Outline"),
-    url("/fonts/dearest1/Dearest outline.ttf") format("opentype");
-  font-style: normal;
-  font-weight: 400;
-  font-display: block;
-}
+/* App-wide CSS
+ */
 
 html,
 body {
@@ -80,6 +55,17 @@ a {
 .bg-redletter {
   background-color: var(--color-redletter);
 }
+.hover-transition-bg-redletter {
+  -webkit-transition: all 300ms ease-in-out;
+  -moz-transition: all 300ms ease-in-out;
+  -ms-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+.hover-transition-bg-redletter:hover {
+  background: var(--color-redletter);
+  color: white;
+}
 /* .bg-sepia {
   background-color: var(--color-sepia);
 } */
@@ -112,4 +98,7 @@ a {
 
 .mt-2pct {
   margin-top: 2%;
+}
+.grid-template-cols-10rem-auto {
+  grid-template-columns: 10em auto;
 }
