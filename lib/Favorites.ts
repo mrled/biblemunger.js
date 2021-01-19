@@ -89,4 +89,9 @@ export const FavoriteMungedVerses: IMungePairVerse[] = [
     replace: "look buddy",
     verseId: { bookNum: 1, chapterNum: 17, verseNum: 4 },
   }, // Genesis 17:4
+  {
+    search: "eat manna",
+    replace: "smoke dank nugs",
+    verseId: { bookNum: 2, chapterNum: 16, verseNum: 35 },
+  }, // Exodus 16:35
 ];
