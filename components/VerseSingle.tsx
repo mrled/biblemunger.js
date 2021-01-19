@@ -28,6 +28,9 @@ export function VerseSingle({ verse, search, replace }: VerseSingleProps) {
     `<span class="${mungedClasses}"><strong>${sanitizedReplace}</strong></span>`
   );
 
+  // TODO: offer a version of this that links the citation to the /munge/search/replace/fromVid
+  // This would be useful for the index page, which displays a random one.
+
   return (
     <div
       className={`${scriptureFont} border-double border-redletter border-l-6 pl-4 mb-8`}
