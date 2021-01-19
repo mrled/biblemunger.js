@@ -7,6 +7,8 @@ import { lookupVid } from "lib/BibleSqlite";
 import { VerseSingle } from "components/VerseSingle";
 import { ThisMungeWithExpandLink } from "components/ThisMunge";
 import MungeYourOwn from "components/MungeYourOwnButton";
+import { InternalLink } from "components/Links";
+import { useAppSettings } from "hooks/useAppSettings";
 
 export const getServerSideProps: GetServerSideProps = async (_context) => {
   const randomFavorite =
@@ -25,20 +27,32 @@ export const getServerSideProps: GetServerSideProps = async (_context) => {
 };
 
 export default function Home({ verse, search, replace }) {
+  const { scriptureFont, scriptureDropcapFont } = useAppSettings();
   return (
     <>
       <SiteHead title="biblemunger: provocative text replacement in famous literature" />
       <SitePageHeader />
 
       <main className="py-20 overflow-hidden min-h-screen max-w-xl mx-auto">
-        <VerseSingle
-          verse={verse}
-          search={search}
-          replace={replace}
-          linkCitation={true}
-        />
-        <ThisMungeWithExpandLink search={search} replace={replace} />
-        <MungeYourOwn />
+        <div className="pb-20 border-b border-redletter">
+          <VerseSingle
+            verse={verse}
+            search={search}
+            replace={replace}
+            linkCitation={true}
+          />
+          <ThisMungeWithExpandLink search={search} replace={replace} />
+          <MungeYourOwn />
+        </div>
+        <div className="py-20">
+          <InternalLink href="/wtf">
+            <p
+              className={`${scriptureFont} ${scriptureDropcapFont} dropcap-spacing-regular`}
+            >
+              What is this?
+            </p>
+          </InternalLink>
+        </div>
       </main>
     </>
   );

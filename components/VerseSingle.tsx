@@ -61,7 +61,7 @@ export function VerseSingle({
       className={`${scriptureFont} border-double border-redletter border-l-6 pl-4 mb-8`}
     >
       <p
-        className={`${scriptureDropcapFont} text-redletter-dropcap text-4xl leading-normal`}
+        className={`${scriptureDropcapFont} dropcap-spacing-large text-redletter-dropcap text-4xl leading-normal`}
         dangerouslySetInnerHTML={{ __html: verseTextReplacedHtml }}
       />
       <VerseCitation

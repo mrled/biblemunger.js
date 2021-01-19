@@ -85,7 +85,6 @@ a {
   line-height: 1;
   font-family: "Dearest Outline", Georgia;
   text-transform: uppercase;
-  padding-right: 1rem;
 }
 .font-kjv1611-dropcap:first-child:first-letter {
   float: left;
@@ -93,7 +92,6 @@ a {
   line-height: 1;
   font-family: KJV1611, Georgia;
   text-transform: uppercase;
-  padding-right: 1rem;
 }
 .font-eczar-dropcap:first-child:first-letter {
   float: left;
@@ -101,7 +99,12 @@ a {
   line-height: 1;
   font-family: Eczar, Georgia;
   text-transform: uppercase;
+}
+.dropcap-spacing-large:first-child:first-letter {
   padding-right: 1rem;
+}
+.dropcap-spacing-regular:first-child:first-letter {
+  padding-right: 0.5rem;
 }
 
 .mt-2pct {

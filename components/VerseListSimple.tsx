@@ -13,7 +13,7 @@ type VerseRowProps = {
 export function VerseRowSimple({ verse, search, replace }: VerseRowProps) {
   const { scriptureFont } = useAppSettings();
 
-  const mungedClasses = "munged text-redletter text-extrabold";
+  const mungedClasses = "munged text-redletter font-extrabold";
   const sanitizedReplace = sanitizeHtml(replace);
   const verseTextReplacedHtml = verse.verseText.replace(
     new RegExp(search, "g"),
