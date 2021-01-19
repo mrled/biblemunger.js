@@ -36,7 +36,7 @@ export function VerseSingle({ verse, search, replace }: VerseSingleProps) {
       className={`${scriptureFont} border-double border-redletter border-l-6 pl-4 mb-8`}
     >
       <p
-        className={`${scriptureDropcapFont} text-redletter-dropcap text-4xl`}
+        className={`${scriptureDropcapFont} text-redletter-dropcap text-4xl leading-normal`}
         dangerouslySetInnerHTML={{ __html: verseTextReplacedHtml }}
       />
       <p className="italic text-lg pt-8 pb-2">
