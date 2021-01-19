@@ -10,6 +10,7 @@ export const ScriptureFontOptions = {
 export const ScriptureDropcapFontOptions = {
   "Dearest Outline": "font-dearest-outline-dropcap",
   KJV1611: "font-kjv1611-dropcap",
+  Eczar: "font-eczar-dropcap",
 };
 export const UiRedButtonFontOptions = {
   Serif: "serif",
