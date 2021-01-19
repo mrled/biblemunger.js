@@ -31,7 +31,12 @@ export default function Home({ verse, search, replace }) {
       <SitePageHeader />
 
       <main className="py-20 overflow-hidden min-h-screen max-w-xl mx-auto">
-        <VerseSingle verse={verse} search={search} replace={replace} />
+        <VerseSingle
+          verse={verse}
+          search={search}
+          replace={replace}
+          linkCitation={true}
+        />
         <ThisMungeWithExpandLink search={search} replace={replace} />
         <MungeYourOwn />
       </main>

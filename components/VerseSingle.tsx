@@ -9,27 +9,52 @@ type VerseSingleProps = {
   verse: IVerse;
   search: string;
   replace: string;
+  linkCitation?: boolean;
 };
+
+/* Verse citation
+ */
+function VerseCitation({
+  verse,
+  search,
+  replace,
+  linkCitation,
+}: VerseSingleProps) {
+  const mungeLink = `/munge/${search}/${replace}/${vid(verse)}`;
+  if (linkCitation) {
+    return (
+      <InternalLink href={mungeLink}>
+        <p className="italic text-lg pt-8 pb-2">
+          &mdash; {verse.bookName} {verse.chapterNum}:{verse.verseNum}
+        </p>
+      </InternalLink>
+    );
+  } else {
+    return (
+      <p className="italic text-lg pt-8 pb-2">
+        &mdash; {verse.bookName} {verse.chapterNum}:{verse.verseNum}
+      </p>
+    );
+  }
+}
 
 /* A single verse component
  */
-export function VerseSingle({ verse, search, replace }: VerseSingleProps) {
+export function VerseSingle({
+  verse,
+  search,
+  replace,
+  linkCitation,
+}: VerseSingleProps) {
   const { scriptureFont, scriptureDropcapFont } = useAppSettings();
 
-  const mungedClasses = "munged text-redletter";
+  const mungedClasses = "munged text-redletter font-extrabold";
   const sanitizedReplace = sanitizeHtml(replace);
 
-  //   const verseTextReplacedHtml = verse.verseText.replace(
-  //     new RegExp(search, "g"),
-  //     `<strong>${sanitizedReplace}</strong>`
-  //   );
   const verseTextReplacedHtml = verse.verseText.replace(
     new RegExp(search, "g"),
     `<span class="${mungedClasses}"><strong>${sanitizedReplace}</strong></span>`
   );
-
-  // TODO: offer a version of this that links the citation to the /munge/search/replace/fromVid
-  // This would be useful for the index page, which displays a random one.
 
   return (
     <div
@@ -39,9 +64,12 @@ export function VerseSingle({ verse, search, replace }: VerseSingleProps) {
         className={`${scriptureDropcapFont} text-redletter-dropcap text-4xl leading-normal`}
         dangerouslySetInnerHTML={{ __html: verseTextReplacedHtml }}
       />
-      <p className="italic text-lg pt-8 pb-2">
-        &mdash; {verse.bookName} {verse.chapterNum}:{verse.verseNum}
-      </p>
+      <VerseCitation
+        verse={verse}
+        search={search}
+        replace={replace}
+        linkCitation={linkCitation}
+      />
     </div>
   );
 }
