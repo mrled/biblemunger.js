@@ -3,8 +3,10 @@ import { GetServerSideProps } from "next";
 
 import { parseVid } from "lib/Verse";
 import { lookupVid } from "lib/BibleSqlite";
-import { VersesList } from "components/VerseList";
 import { SiteHead, SitePageHeader } from "components/SiteChrome";
+import { VerseSingle } from "components/VerseSingle";
+import { ThisMungeWithExpandLink } from "components/ThisMunge";
+import MungeYourOwn from "components/MungeYourOwnButton";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { search, replace, fromVid } = context.params;
@@ -28,12 +30,10 @@ export default function MungeSingleVerse({ search, replace, verse }) {
     <>
       <SiteHead title={`biblemunger: (${verseLabel}) ${search} ⇒ ${replace}`} />
       <SitePageHeader />
-      <main className="p-2 overflow-hidden max-w-3xl border-l-6 border-double border-redletter mt-2pct mb-0 mx-auto">
-        <p className="text-xl bold">
-          {search} ⇒ {replace}
-        </p>
-        <p className="text-lg">{verseLabel}</p>
-        <VersesList verses={[verse]} search={search} replace={replace} />
+      <main className="py-20 overflow-hidden min-h-screen max-w-xl mx-auto">
+        <VerseSingle verse={verse} search={search} replace={replace} />
+        <ThisMungeWithExpandLink search={search} replace={replace} />
+        <MungeYourOwn />
       </main>
     </>
   );
