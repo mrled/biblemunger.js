@@ -95,6 +95,14 @@ a {
   text-transform: uppercase;
   padding-right: 1rem;
 }
+.font-eczar-dropcap:first-child:first-letter {
+  float: left;
+  font-size: 400%;
+  line-height: 1;
+  font-family: Eczar, Georgia;
+  text-transform: uppercase;
+  padding-right: 1rem;
+}
 
 .mt-2pct {
   margin-top: 2%;
