@@ -162,6 +162,7 @@ function main() {
   });
   xml2dbParser.add_argument("--skip-if-exists", {
     help: "Do not regenerate the database if --dbfile already exists",
+    action: "store_true",
   });
   xml2dbParser.add_argument("--tablename", {
     help:

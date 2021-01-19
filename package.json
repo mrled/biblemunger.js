@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "buildall": "node kjv.xml2sqlite.js && next build",
+    "buildall": "./translate.js --kjvxml kjv.xml xml2db --dbfile database/kjv.sqlite --tablename kjv && next build",
     "buildstart": "next build && next start",
     "start": "next start"
   },
