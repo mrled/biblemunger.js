@@ -37,24 +37,11 @@ export default function About() {
           </ExternalLink>
           .
         </p>
-
-        <h2 className="text-2xl py-4">How do I use it?</h2>
         <p className="my-2">
-          It's easy, simply{" "}
+          It's easy to use, simply{" "}
           <span className="mx-4">
             <MungeYourOwn />
           </span>
-        </p>
-
-        <h2 className="text-2xl py-4">From whence it cometh?</h2>
-        <p className="my-2">
-          <span className="font-kjv1611">biblemunger</span> was written by{" "}
-          <ExternalLink href="https://me.micahrl.com">Micah</ExternalLink>.
-        </p>
-        <p className="my-2">
-          <ExternalLink href="https://github.com/mrled/biblemunger.js">
-            Contributions are welcome
-          </ExternalLink>
         </p>
 
         <h2 className="text-2xl py-4">What else should I know about it?</h2>
@@ -100,22 +87,18 @@ export default function About() {
           match a word that begins a sentence.
         </p>
 
-        <h2 className="text-2xl py-4">Thanks</h2>
+        <h2 className="text-2xl py-4">Credits</h2>
+        <p className="my-2">
+          <span className="font-kjv1611">biblemunger</span> was written by{" "}
+          <ExternalLink href="https://me.micahrl.com">Micah</ExternalLink>.
+        </p>
         <p className="my-2">
           <ul className="list-disc pl-8">
             <li>
-              My wonderful friend{" "}
+              Site design thanks to my wonderful friend{" "}
               <ExternalLink href="http://benjamingodwin.com/">
                 Benjamin Godwin
               </ExternalLink>
-              , for the site design.
-            </li>
-            <li>
-              XML KJV from{" "}
-              <ExternalLink href="https://sourceforge.net/projects/zefania-sharp/">
-                the Zefania project
-              </ExternalLink>
-              , which probably would not appreciate this at all.
             </li>
             <li>
               <ExternalLink href="https://github.com/ctrlcctrlv/kjv1611">
@@ -125,7 +108,6 @@ export default function About() {
               <ExternalLink href="https://twitter.com/fr_brennan">
                 Fredrick Brennan
               </ExternalLink>
-              .
             </li>
             <li>
               <ExternalLink href="https://fonts.google.com/specimen/Eczar">
@@ -135,7 +117,6 @@ export default function About() {
               <ExternalLink href="https://www.rosettatype.com/">
                 Rosetta
               </ExternalLink>
-              .
             </li>
             <li>
               <ExternalLink href="https://www.dafont.com/dearest.font">
@@ -145,9 +126,20 @@ export default function About() {
               <ExternalLink href="http://moorstation.org/typoasis/designers/westwind/">
                 West Wind Fonts
               </ExternalLink>
-              .
+            </li>
+            <li>
+              XML KJV thanks to{" "}
+              <ExternalLink href="https://sourceforge.net/projects/zefania-sharp/">
+                the Zefania project
+              </ExternalLink>
+              , which probably would not appreciate this at all
             </li>
           </ul>
+        </p>
+        <p className="my-2">
+          <ExternalLink href="https://github.com/mrled/biblemunger.js">
+            Contributions are welcome
+          </ExternalLink>
         </p>
       </main>
     </>
