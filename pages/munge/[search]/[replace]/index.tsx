@@ -8,10 +8,11 @@ import { ThisMunge } from "components/ThisMunge";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { search, replace } = context.params;
+  const reqId = `[${new Date().toJSON()}]' gssp: /munge/${search}/${replace}`;
+  console.log(`${reqId}: about to query db`);
   const result = await concordance(search as string);
-  const searchCompleteDate = new Date().toJSON();
   console.log(
-    `[${searchCompleteDate}]' getServerSideProps() in /munge/${search}/${replace}, got ${result.length} results`
+    `${reqId}: ${result.length} results done at ${new Date().toJSON()}`
   );
   return {
     props: {
