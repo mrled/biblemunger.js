@@ -19,13 +19,8 @@ export default function About() {
             provocative text replacement in famous literature
           </p>
         </div>
-        <h2 className="text-2xl py-4">
-          What the{" "}
-          <InternalLink href="/munge/filthy rags/used tampons">
-            <span className="font-kjv1611">filthy rags</span>
-          </InternalLink>{" "}
-          is this?
-        </h2>
+
+        <h2 className="text-2xl py-4">What is this?</h2>
         <p className="my-2">
           <span className="font-kjv1611">biblemunger</span> is a stupid thing
           that will replace arbitrary text in the Bible with other arbitrary
@@ -42,9 +37,19 @@ export default function About() {
           </ExternalLink>
           .
         </p>
+
+        <h2 className="text-2xl py-4">How do I use it?</h2>
         <p className="my-2">
-          <ExternalLink href="https://me.micahrl.com">mrled</ExternalLink> is
-          responsible for this bullshit.
+          It's easy, simply{" "}
+          <span className="mx-4">
+            <MungeYourOwn />
+          </span>
+        </p>
+
+        <h2 className="text-2xl py-4">From whence it cometh?</h2>
+        <p className="my-2">
+          <span className="font-kjv1611">biblemunger</span> was written by{" "}
+          <ExternalLink href="https://me.micahrl.com">Micah</ExternalLink>.
         </p>
         <p className="my-2">
           <ExternalLink href="https://github.com/mrled/biblemunger.js">
@@ -52,27 +57,7 @@ export default function About() {
           </ExternalLink>
         </p>
 
-        <h2 className="text-2xl py-4">
-          How the{" "}
-          <InternalLink href="munge/issue/hot cum/26-23-20">
-            <span className="font-kjv1611">issue</span>
-          </InternalLink>{" "}
-          do I use this?
-        </h2>
-
-        <p className="my-2">It's easy, simply munge thine own verfe:</p>
-        <div className="p-4">
-          <MungeYourOwn />
-        </div>
-
-        <h2 className="text-2xl py-4">
-          What the{" "}
-          <InternalLink href="munge/fruit/cock/22-2-3">
-            <span className="font-kjv1611">fruit</span>
-          </InternalLink>{" "}
-          else should I know about it?
-        </h2>
-
+        <h2 className="text-2xl py-4">What else should I know about it?</h2>
         <p className="my-2">
           Note that it will even search/replace just a part of a word. For
           instance, in the{" "}
@@ -115,15 +100,10 @@ export default function About() {
           match a word that begins a sentence.
         </p>
 
-        <h2 className="text-2xl py-4">
-          Giving{" "}
-          <InternalLink href="">
-            <span className="font-kjv1611">thankf</span>
-          </InternalLink>
-        </h2>
+        <h2 className="text-2xl py-4">Thanks</h2>
         <p className="my-2">
           <ul className="list-disc pl-8">
-            <li>My wonderful friend Ben, for design help.</li>
+            <li>My wonderful friend Ben, for the site design.</li>
             <li>
               XML KJV from{" "}
               <ExternalLink href="https://sourceforge.net/projects/zefania-sharp/">
