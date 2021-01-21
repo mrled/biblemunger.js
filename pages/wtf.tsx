@@ -103,7 +103,13 @@ export default function About() {
         <h2 className="text-2xl py-4">Thanks</h2>
         <p className="my-2">
           <ul className="list-disc pl-8">
-            <li>My wonderful friend Ben, for the site design.</li>
+            <li>
+              My wonderful friend{" "}
+              <ExternalLink href="http://benjamingodwin.com/">
+                Benjamin Godwin
+              </ExternalLink>
+              , for the site design.
+            </li>
             <li>
               XML KJV from{" "}
               <ExternalLink href="https://sourceforge.net/projects/zefania-sharp/">
