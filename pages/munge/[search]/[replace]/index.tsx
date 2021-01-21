@@ -24,6 +24,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 export default function MungeBible({ search, replace, verses }) {
+  const renderId = `[${new Date().toJSON()}] default: /munge/${search}/${replace}`;
+  console.log(`${renderId}: About to return JSX`);
   return (
     <>
       <SiteHead title={`biblemunger: ${search} ⇒ ${replace}`} />
