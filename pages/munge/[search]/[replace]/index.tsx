@@ -11,7 +11,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const result = await concordance(search as string);
   const searchCompleteDate = new Date().toJSON();
   console.log(
-    `[${searchCompleteDate}' getServerSideProps() in /munge/${search}/${replace}, got ${result.length} results`
+    `[${searchCompleteDate}]' getServerSideProps() in /munge/${search}/${replace}, got ${result.length} results`
   );
   return {
     props: {
