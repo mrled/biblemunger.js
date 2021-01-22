@@ -1,6 +1,8 @@
 This is a rewrite of
 [my old Python biblemunger project](https://github.com/mrled/biblemunger).
 
+<https://biblemunger.micahrl.com>
+
 ## Development
 
 First, run the development server:
