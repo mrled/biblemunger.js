@@ -94,4 +94,9 @@ export const FavoriteMungedVerses: IMungePairVerse[] = [
     replace: "smoke dank nugs",
     verseId: { bookNum: 2, chapterNum: 16, verseNum: 35 },
   }, // Exodus 16:35
+  {
+    search: "ointment",
+    replace: "Axe Body Spray",
+    verseId: { bookNum: 12, chapterNum: 20, verseNum: 13 },
+  }, // 2 Kings 20:13
 ];
