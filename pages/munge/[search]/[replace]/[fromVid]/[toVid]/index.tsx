@@ -1,55 +1,64 @@
 import React from "react";
-import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
+import useSWR from "swr";
 
-import { parseVid } from "lib/Verse";
-import { lookupPassage, lookupVid } from "lib/BibleSqlite";
 import { VersesListSimple } from "components/VerseListSimple";
 import { SiteHead, SitePageHeader } from "components/SiteChrome";
 import { ThisMunge } from "components/ThisMunge";
+import { verseCitationString } from "lib/Verse";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { search, replace, fromVid, toVid } = context.params;
+// TODO: expose in the UI, and prevent too many results from causing problems. Require pagination?
 
-  const fromVidTable = parseVid(fromVid as string);
-  const toVidTable = parseVid(toVid as string);
+export default function MungePassage() {
+  const router = useRouter();
+  const { search, replace, fromVid, toVid } = router.query;
 
-  const fromVerse = await lookupVid(fromVidTable);
-  const toVerse = await lookupVid(toVidTable);
-  const passage = await lookupPassage(fromVerse, toVerse);
+  // router.query is null on first render
+  if (!search || !replace || !fromVid || !toVid) {
+    // TODO: use nicer loading spinner
+    return null;
+  }
 
-  console.log(
-    `getServerSideProps() in /munge/${search}/${replace}/${fromVid}/${toVid}, got ${passage.length} results`
-  );
-  return {
-    props: {
-      search,
-      replace,
-      fromVerse,
-      toVerse,
-      passage,
-    },
-  };
-};
+  // Once the router has loaded, then we can do an SWR query of our API
+  const { data: passage, error } = useSWR(`/api/passage/${fromVid}/${toVid}`);
 
-export default function MungePassage({
-  search,
-  replace,
-  fromVerse,
-  toVerse,
-  passage,
-}) {
-  const fromVerseLabel = `${fromVerse.bookName} ${fromVerse.chapterNum}:${fromVerse.verseNum}`;
-  const toVerseLabel = `${toVerse.bookName} ${toVerse.chapterNum}:${toVerse.verseNum}`;
+  // TODO: clean up code duplication
+  if (error) {
+    return (
+      <>
+        <SiteHead title={`Error: ${error}`} />
+        <SitePageHeader />
+        <main className="p-2 overflow-hidden max-w-3xl mt-2pct mb-0 mx-auto">
+          <div className="text-lg my-8 text-center">Error: {error}</div>
+        </main>
+      </>
+    );
+  } else if (!passage || typeof passage === "undefined") {
+    // TODO: use nicer loading spinner
+    return (
+      <>
+        <SiteHead title="biblemunger" />
+        <SitePageHeader />
+        <main className="p-2 overflow-hidden max-w-3xl mt-2pct mb-0 mx-auto">
+          <div className="text-lg my-8 text-center">Loading...</div>
+        </main>
+      </>
+    );
+  }
+
+  const fromVerseLabel = verseCitationString(passage[0]);
+  const toVerseLabel = verseCitationString(passage[passage.length - 1]);
+
+  const headTitle = `biblemunger: (${fromVerseLabel}&mdash;${toVerseLabel}) ${search} ⇒ ${replace}`;
+
   return (
     <>
-      <SiteHead
-        title={`biblemunger: (${fromVerseLabel}&mdash;${toVerseLabel}) ${search} ⇒ ${replace}`}
-      />
+      <SiteHead title={headTitle} />
       <SitePageHeader />
       <main className="p-2 overflow-hidden max-w-3xl mt-2pct mb-0 mx-auto">
         <div className="text-lg my-8 text-center">
           <div>
-            <ThisMunge search={search} replace={replace} />
+            <ThisMunge search={search as string} replace={replace as string} />
           </div>
           <p>
             In passage {fromVerseLabel} &mdash; {toVerseLabel}
@@ -58,8 +67,8 @@ export default function MungePassage({
         <div className="border-l-6 border-double border-redletter pl-4 my-8">
           <VersesListSimple
             verses={passage}
-            search={search}
-            replace={replace}
+            search={search as string}
+            replace={replace as string}
           />
         </div>
       </main>

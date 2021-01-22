@@ -1,37 +1,45 @@
 import React from "react";
-import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
+import useSWR from "swr";
 
-import { concordance } from "lib/BibleSqlite";
 import { VersesList } from "components/VerseList";
 import { SiteHead, SitePageHeader } from "components/SiteChrome";
-import { ThisMunge } from "components/ThisMunge";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { search, replace } = context.params;
-  const reqId = `[${new Date().toJSON()}]' gssp: /munge/${search}/${replace}`;
-  console.log(`${reqId}: about to query db`);
-  const result = await concordance(search as string);
-  console.log(
-    `${reqId}: ${result.length} results done at ${new Date().toJSON()}`
-  );
-  return {
-    props: {
-      search,
-      replace,
-      verses: result,
-    },
-  };
-};
+export default function MungeBible() {
+  const router = useRouter();
+  const { search, replace } = router.query;
 
-export default function MungeBible({ search, replace, verses }) {
-  const renderId = `[${new Date().toJSON()}] default: /munge/${search}/${replace}`;
-  console.log(`${renderId}: About to return JSX`);
+  // router.query is null on first render
+  if (!search || !replace) {
+    // TODO: use nicer loading spinner
+    return null;
+  }
+
+  // Once the router has loaded, then we can do an SWR query of our API
+  const { data: verses, error } = useSWR(`/api/concordance/${search}`);
+
+  let content: JSX.Element;
+  if (error) {
+    content = <div>Error: {error}</div>;
+  } else if (!verses || typeof verses === "undefined") {
+    // TODO: use nicer loading spinner
+    content = <p>Loading...</p>;
+  } else {
+    content = (
+      <VersesList
+        verses={verses}
+        search={search as string}
+        replace={replace as string}
+      />
+    );
+  }
+
   return (
     <>
       <SiteHead title={`biblemunger: ${search} ⇒ ${replace}`} />
       <SitePageHeader />
       <main className="p-2 overflow-hidden max-w-2xl mt-2pct mb-0 mx-auto">
-        <VersesList verses={verses} search={search} replace={replace} />
+        {content}
       </main>
     </>
   );

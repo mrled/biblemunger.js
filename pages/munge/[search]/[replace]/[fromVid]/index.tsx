@@ -8,6 +8,9 @@ import { VerseSingle } from "components/VerseSingle";
 import { ThisMungeWithExpandLink } from "components/ThisMunge";
 import MungeYourOwn from "components/MungeYourOwnButton";
 
+/* This is just a _single verse_, so we do a server side query for it
+ */
+
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { search, replace, fromVid } = context.params;
 

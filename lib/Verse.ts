@@ -73,3 +73,9 @@ export function referenceEq(verse1: IVidTable, verse2: IVidTable) {
     verse1.verseNum == verse2.verseNum
   );
 }
+
+/* Return a verse citation in nice format, e.g. "Genesis 1:1"
+ */
+export function verseCitationString(verse: IVerse) {
+  return `${verse.bookName} ${verse.chapterNum}:${verse.verseNum}`;
+}
