@@ -1,5 +1,5 @@
 import React from "react";
-import { FavoriteSearches } from "lib/Favorites";
+import { FavoriteSearches } from "lib/all/Favorites";
 import { MungeLinkList } from "components/MungeLink";
 import MungeForm from "components/MungeForm";
 import { SiteHead, SitePageHeader } from "components/SiteChrome";
@@ -7,7 +7,7 @@ import { SiteHead, SitePageHeader } from "components/SiteChrome";
 export default function MungePage() {
   return (
     <>
-      <SiteHead title="biblemunger" />
+      <SiteHead title="biblemunger" urlPath="/munge" />
 
       <SitePageHeader />
 

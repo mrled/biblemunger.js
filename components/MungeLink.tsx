@@ -1,4 +1,4 @@
-import { IMungePair } from "lib/MungePair";
+import { IMungePair } from "lib/all/MungePair";
 import React from "react";
 import { InternalLink } from "./Links";
 

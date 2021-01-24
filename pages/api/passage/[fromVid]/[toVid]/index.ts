@@ -1,8 +1,8 @@
 /* Search for any text
  */
 
-import { lookupPassage, lookupVid } from "lib/BibleSqlite";
-import { parseVid } from "lib/Verse";
+import { lookupPassage, lookupVid } from "lib/server/BibleSqlite";
+import { parseVid } from "lib/all/Verse";
 
 // TODO: Add typing
 

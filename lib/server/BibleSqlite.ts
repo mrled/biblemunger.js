@@ -1,7 +1,7 @@
 import sqlite3 from "sqlite3";
 import sqlite from "sqlite";
 import { open } from "sqlite";
-import { IVerse, IVidTable } from "./Verse";
+import { IVerse, IVidTable } from "../all/Verse";
 
 const DatabaseRelativePath = `database/kjv.sqlite`;
 
@@ -28,6 +28,24 @@ export async function concordance(textLike: string): Promise<IVerse[]> {
   const result = await db.all<IVerse[]>(
     `SELECT id, bookNum, chapterNum, verseNum, bookName, bookShortName, verseText FROM ${KjvTableName} WHERE verseText LIKE ?`,
     `%${textLike}%`
+  );
+  console.log(`VerseTextLike(${textLike}) returned ${result.length} results`);
+  return result;
+}
+
+/* Find all verses between two verses containing a string
+ */
+export async function concordanceBetween(
+  textLike: string,
+  startVidTable: IVidTable,
+  endVidTable: IVidTable
+): Promise<IVerse[]> {
+  const db = await OpenDatabase();
+  const fromResult = await lookupVid(startVidTable);
+  const toResult = await lookupVid(endVidTable);
+  const result = await db.all<IVerse[]>(
+    `SELECT id, bookNum, chapterNum, verseNum, bookName, bookShortName, verseText FROM ${KjvTableName} WHERE verseText LIKE $textLike AND id >= $fromId AND id <= $toId`,
+    { $textLike: `%${textLike}%`, $fromId: fromResult.id, $toId: toResult.id }
   );
   console.log(`VerseTextLike(${textLike}) returned ${result.length} results`);
   return result;

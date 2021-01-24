@@ -1,7 +1,7 @@
 /* Search for any text
  */
 
-import { concordance } from "lib/BibleSqlite";
+import { concordance } from "lib/server/BibleSqlite";
 
 // TODO: Add typing
 

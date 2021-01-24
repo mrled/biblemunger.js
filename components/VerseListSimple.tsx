@@ -1,7 +1,7 @@
 import React from "react";
 
-import { IVerse, verseKey, vid } from "lib/Verse";
-import { sanitizeHtml } from "lib/Sanitize";
+import { IVerse, verseKey, vid } from "lib/all/Verse";
+import { sanitizeHtml } from "lib/all/Sanitize";
 import { InternalLink } from "./Links";
 import { useAppSettings } from "hooks/useAppSettings";
 

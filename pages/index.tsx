@@ -1,9 +1,9 @@
 import React from "react";
 import { GetServerSideProps } from "next";
 
-import { FavoriteMungedVerses } from "lib/Favorites";
+import { FavoriteMungedVerses } from "lib/all/Favorites";
 import { SiteHead, SitePageHeader } from "components/SiteChrome";
-import { lookupVid } from "lib/BibleSqlite";
+import { lookupVid } from "lib/server/BibleSqlite";
 import { VerseSingle } from "components/VerseSingle";
 import { ThisMungeWithExpandLink } from "components/ThisMunge";
 import MungeYourOwn from "components/MungeYourOwnButton";
@@ -30,7 +30,10 @@ export default function Home({ verse, search, replace }) {
   const { scriptureFont, scriptureDropcapFont } = useAppSettings();
   return (
     <>
-      <SiteHead title="biblemunger: provocative text replacement in famous literature" />
+      <SiteHead
+        title="biblemunger: provocative text replacement in famous literature"
+        urlPath="/"
+      />
       <SitePageHeader />
 
       <main className="py-20 overflow-hidden min-h-screen max-w-xl mx-auto">

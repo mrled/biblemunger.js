@@ -79,3 +79,16 @@ export function referenceEq(verse1: IVidTable, verse2: IVidTable) {
 export function verseCitationString(verse: IVerse) {
   return `${verse.bookName} ${verse.chapterNum}:${verse.verseNum}`;
 }
+
+/* Return a single verse from a list of verses to be used for the social preview.
+ *
+ * Social previews must be some reasonable size (not too long, not too short).
+ *
+ * The returned verse should be the same every time for the same list of verses.
+ */
+export function socialPreviewVerseFromList(verses: IVerse[]) {
+  // This number happens to be a Wagstaff Prime, and I picked it because it was large and on wikipedia.
+  const prime = 2932031007403;
+  const verseIdx = (verses.length - 1) % prime;
+  return verses[verseIdx];
+}

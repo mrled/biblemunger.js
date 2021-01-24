@@ -58,7 +58,10 @@ export default function Controls() {
 
   return (
     <>
-      <SiteHead title="biblemunger: provocative text replacement in famous literature" />
+      <SiteHead
+        title="biblemunger: provocative text replacement in famous literature"
+        urlPath="/wtf"
+      />
       <SitePageHeader />
 
       <main className="py-20 overflow-hidden min-h-screen max-w-xl mx-auto">

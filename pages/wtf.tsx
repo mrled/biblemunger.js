@@ -7,7 +7,7 @@ import MungeYourOwn from "components/MungeYourOwnButton";
 export default function About() {
   return (
     <>
-      <SiteHead title="About biblemunger" />
+      <SiteHead title="About biblemunger" urlPath="/wtf" />
       <SitePageHeader />
 
       <main className="py-20 overflow-hidden min-h-screen max-w-xl mx-auto font-eczar">
