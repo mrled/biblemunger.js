@@ -10,6 +10,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^10.0.5",
     "argparse": "^2.0.1",
     "chrome-aws-lambda": "^5.5.0",
     "classnames": "^2.2.6",
