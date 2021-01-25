@@ -58,8 +58,8 @@ export function SiteHead(props: SiteHeadProps) {
     case undefined:
     case "":
     case "default":
-      ogImage = `/api/preview/openGraph/default`;
-      twImage = `${appUri}/api/preview/twitter/default`;
+      ogImage = `/defaultPreview_1200x628.png`;
+      twImage = `${appUri}/defaultPreview_1200x675.png`;
       break;
     case "apiPreview":
       ogImage = `/api/preview/openGraph${props.urlPath}`;

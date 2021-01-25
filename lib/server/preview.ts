@@ -6,7 +6,6 @@ import puppeteer from "puppeteer";
 import chromium from "chrome-aws-lambda";
 
 import { getAppUri } from "lib/server/appUri";
-import defaultImagePreview from "lib/all/previewDefaultImage";
 
 async function launchBrowser(
   puppeteerLaunchArgs: any
@@ -29,7 +28,11 @@ async function launchBrowser(
   }
 }
 
-async function takeScreenshotOfUri(uri: string, width: number, height: number) {
+async function takeScreenshotOfUri(
+  uri: string,
+  width: number,
+  height: number
+): Promise<Buffer> {
   const browser = await launchBrowser({});
   const page = await browser.newPage();
 
@@ -43,7 +46,7 @@ async function takeScreenshotOfUri(uri: string, width: number, height: number) {
     deviceScaleFactor: scaleFactor,
   });
   await page.goto(uri);
-  const screenshot = await page.screenshot();
+  const screenshot: Buffer = await page.screenshot();
   return screenshot;
 }
 
@@ -51,14 +54,14 @@ export async function getScreenshot(
   uri: string,
   width: number,
   height: number
-) {
+): Promise<Buffer | null> {
   try {
     const newScreenshot = await takeScreenshotOfUri(uri, width, height);
     return newScreenshot;
   } catch (err) {
     // TODO: default image is always openGraph dimensions, fixme
     console.error(`Encountered error ${err}, returning default image`);
-    return defaultImagePreview.openGraph.image;
+    return null;
   }
 }
 
