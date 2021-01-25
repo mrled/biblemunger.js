@@ -3,11 +3,12 @@
  */
 
 export function getAppUri() {
-  switch (process.env.VERCEL_ENV) {
+  const vercelEnv = process.env.VERCEL_ENV;
+  switch (vercelEnv) {
     case "production":
       return "https://biblemunger.micahrl.com";
     case "preview":
-    //   return "preview URI";
+      return "biblemungerjs-wip.mrled.vercel.app";
     case "development":
     //   return "deployed development URI";
     case "":
