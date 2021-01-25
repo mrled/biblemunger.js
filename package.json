@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "buildstart": "next build && next start",
-    "start": "next start"
+    "start": "next start",
+    "buildall": "yarn build"
   },
   "dependencies": {
     "@mrled/biblemungerjs-kjv": "^1.0.7",
