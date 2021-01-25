@@ -1,7 +1,7 @@
 /* Search for any text
  */
 
-import { concordance } from "lib/server/BibleSqlite";
+import { concordance } from "@mrled/biblemungerjs-kjv";
 
 // TODO: Add typing
 

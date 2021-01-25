@@ -1,6 +1,7 @@
 import React from "react";
 
-import { IVerse, verseKey, vid } from "lib/all/Verse";
+import { IVerse, verseKey, vid } from "@mrled/biblemungerjs-kjv/verse";
+
 import { sanitizeHtml } from "lib/all/Sanitize";
 import { InternalLink } from "./Links";
 import { useAppSettings } from "hooks/useAppSettings";

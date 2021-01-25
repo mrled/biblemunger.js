@@ -1,9 +1,10 @@
 import React from "react";
 import { GetServerSideProps } from "next";
 
+import { lookupVid } from "@mrled/biblemungerjs-kjv";
+
 import { FavoriteMungedVerses } from "lib/all/Favorites";
 import { SiteHead, SitePageHeader } from "components/SiteChrome";
-import { lookupVid } from "lib/server/BibleSqlite";
 import { VerseSingle } from "components/VerseSingle";
 import { ThisMungeWithExpandLink } from "components/ThisMunge";
 import MungeYourOwn from "components/MungeYourOwnButton";

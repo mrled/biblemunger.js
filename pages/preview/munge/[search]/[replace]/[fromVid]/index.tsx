@@ -4,8 +4,9 @@
 import React from "react";
 import { GetServerSideProps } from "next";
 
-import { parseVid } from "lib/all/Verse";
-import { lookupVid } from "lib/server/BibleSqlite";
+import { parseVid } from "@mrled/biblemungerjs-kjv/verse";
+import { lookupVid } from "@mrled/biblemungerjs-kjv";
+
 import { VerseSingle } from "components/VerseSingle";
 import { ThisMunge } from "components/ThisMunge";
 

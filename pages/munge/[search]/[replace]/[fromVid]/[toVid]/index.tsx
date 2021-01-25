@@ -1,19 +1,20 @@
 import React from "react";
 import { useRouter } from "next/router";
+import { GetServerSideProps } from "next";
 import useSWR from "swr";
 
-import { VersesListSimple } from "components/VerseListSimple";
-import { SiteHead, SitePageHeader } from "components/SiteChrome";
-import { ThisMunge } from "components/ThisMunge";
 import {
   IVerse,
   parseVid,
   socialPreviewVerseFromList,
   verseCitationString,
   vid,
-} from "lib/all/Verse";
-import { GetServerSideProps } from "next";
-import { concordanceBetween, lookupVid } from "lib/server/BibleSqlite";
+} from "@mrled/biblemungerjs-kjv/verse";
+import { concordanceBetween, lookupVid } from "@mrled/biblemungerjs-kjv";
+
+import { VersesListSimple } from "components/VerseListSimple";
+import { SiteHead, SitePageHeader } from "components/SiteChrome";
+import { ThisMunge } from "components/ThisMunge";
 
 // TODO: expose in the UI, and prevent too many results from causing problems. Require pagination?
 

@@ -2,11 +2,15 @@ import React from "react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 
+import { concordance } from "@mrled/biblemungerjs-kjv";
+import {
+  socialPreviewVerseFromList,
+  vid,
+} from "@mrled/biblemungerjs-kjv/verse";
+
 import { VersesList } from "components/VerseList";
 import { SiteHead, SitePageHeader } from "components/SiteChrome";
 import { GetServerSideProps } from "next";
-import { concordance } from "lib/server/BibleSqlite";
-import { socialPreviewVerseFromList, vid } from "lib/all/Verse";
 
 type MungeBibleServerSidePropsResult = {
   search: string;

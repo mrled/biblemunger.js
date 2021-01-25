@@ -1,8 +1,8 @@
 /* Search for any text
  */
 
-import { lookupPassage, lookupVid } from "lib/server/BibleSqlite";
-import { parseVid } from "lib/all/Verse";
+import { lookupPassage, lookupVid } from "@mrled/biblemungerjs-kjv";
+import { parseVid } from "@mrled/biblemungerjs-kjv/verse";
 
 // TODO: Add typing
 

@@ -1,8 +1,9 @@
 import React from "react";
 import { GetServerSideProps } from "next";
 
-import { IVerse, parseVid } from "lib/all/Verse";
-import { lookupVid } from "lib/server/BibleSqlite";
+import { IVerse, parseVid } from "@mrled/biblemungerjs-kjv/verse";
+import { lookupVid } from "@mrled/biblemungerjs-kjv";
+
 import { SiteHead, SitePageHeader } from "components/SiteChrome";
 import { VerseSingle } from "components/VerseSingle";
 import { ThisMungeWithExpandLink } from "components/ThisMunge";

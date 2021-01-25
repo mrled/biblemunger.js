@@ -1,4 +1,4 @@
-import { IVidTable } from "./Verse";
+import { IVidTable } from "@mrled/biblemungerjs-kjv/verse";
 
 /* A search/replace pair
  */
