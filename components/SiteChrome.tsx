@@ -2,8 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Head from "next/head";
 
-import { getAppUri } from "lib/server/appUri";
-import { previewImageDimensions } from "lib/all/previewImageDimensions";
+import { getAppEnv } from "lib/server/appUri";
 
 const defaultTitle = "biblemunger";
 const defaultSiteDescription =
@@ -27,6 +26,7 @@ type SiteHeadProps = {
    * The <SiteHead> component will prepend the app root URI for Twitter images;
    * callers do not need to worry about this.
    */
+  // TODO: require this to be a string, and don't allow the literal string "apiPreview"
   preview?: string;
 
   // Override default page title
@@ -46,28 +46,22 @@ type SiteHeadProps = {
 export function SiteHead(props: SiteHeadProps) {
   const title = props.title || defaultTitle;
   const description = props.description || defaultSiteDescription;
-  const appUri = getAppUri();
-  const ogUrl = `${appUri}${props.urlPath}`;
+  const appEnv = getAppEnv();
+  const ogUrl = `${appEnv.uri}${props.urlPath}`;
   const twAccount = "@mrled";
-  const twImageWidth = String(previewImageDimensions.twitterImage.width);
-  const twImageHeight = String(previewImageDimensions.twitterImage.height);
 
   let ogImage: string;
-  let twImage: string;
   switch (props.preview) {
     case undefined:
     case "":
     case "default":
       ogImage = `/defaultPreview_1200x628.png`;
-      twImage = `${appUri}/defaultPreview_1200x675.png`;
       break;
     case "apiPreview":
-      ogImage = `/api/preview/openGraph${props.urlPath}`;
-      twImage = `${appUri}/api/preview/twitter${props.urlPath}`;
+      ogImage = `${appEnv.ogImageBase}/api/ogImage/biblemunger/${appEnv.ogImageEnv}/preview${props.urlPath}`;
       break;
     default:
-      ogImage = `/api/preview/openGraph${props.preview}`;
-      twImage = `${appUri}/api/preview/twitter${props.preview}`;
+      ogImage = `${appEnv.ogImageBase}/api/ogImage/biblemunger/${appEnv.ogImageEnv}/preview${props.preview}`;
   }
 
   return (
@@ -110,10 +104,12 @@ export function SiteHead(props: SiteHeadProps) {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:card" content="summary_large_image" />
+      {/* Twitter should fall back to og:image
       <meta name="twitter:image" content={twImage} />
       <meta name="twitter:image:width" content={twImageWidth} />
       <meta name="twitter:image:height" content={twImageHeight} />
       <meta name="twitter:image:alt" content={description} />
+      */}
     </Head>
   );
 }
