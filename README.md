@@ -17,6 +17,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 This will deploy automatically on pushes to the master branch.
 
+## Prerequisites
+
+- The biblemungerjs-kjv package ([GitHub](https://github.com/mrled/biblemungerjs-kjv), [NPM](https://www.npmjs.com/package/@mrled/biblemungerjs-kjv))
+- [ogimage](https://github.com/mrled/ogimage) deployed to <https://ogimage.micahrl.com> (see `lib/all/appUri.ts`)
+
 ## Thanks
 
 - My wonderful friend Ben, for design help
